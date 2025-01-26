@@ -1,10 +1,19 @@
 ﻿using System;
+using DG.Tweening;
+using Extensions;
+using Scripts.UI.Buttons;
+using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scripts.UI.ButtonPanels
 {
     public class MainMenuButtonPanel : ExclusiveButtonPanel<MainMenuButtonPanel.MainMenuButtons>
     {
+        [SerializeField] private AnimatedUIImage cursor;
+        [SerializeField] private RectTransform cursorImageRectTransform;
+        [SerializeField] private float cursorPunchScale = 2;
+        [SerializeField] private float cursorPunchDuration;
         public enum MainMenuButtons
         {
             Null,
@@ -14,9 +23,13 @@ namespace Scripts.UI.ButtonPanels
             Credits,
             Quit
         }
-        protected override void OnButtonPressed(MainMenuButtons buttonPressed)
+
+        protected override void OnButtonPressed(ValuedUIButton<MainMenuButtons> button)
         {
+            var buttonPressed = button.Value;
             Debug.Log("Button pressed: " + buttonPressed);
+            cursorImageRectTransform.localScale = Vector3.one;
+            cursorImageRectTransform.DOPunchScale(Vector3.one * cursorPunchScale, cursorPunchDuration);
             switch (buttonPressed)
             {
                 case MainMenuButtons.Continue:
@@ -33,6 +46,12 @@ namespace Scripts.UI.ButtonPanels
                 default:
                     throw new ArgumentOutOfRangeException(nameof(buttonPressed), buttonPressed, null);
             }
+        }
+
+        protected override void OnButtonHovered(ValuedUIButton<MainMenuButtons> button)
+        {
+            cursor.rectTransform().anchoredPosition = 
+                new Vector2(cursor.rectTransform().anchoredPosition.x, button.rectTransform().anchoredPosition.y);
         }
     }
 }

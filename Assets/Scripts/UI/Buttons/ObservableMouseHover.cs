@@ -1,10 +1,11 @@
-﻿using R3;
+﻿using Extensions;
+using R3;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Scripts.UI.Buttons
 {
-    public class ObservableMouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ObservableMouseHover : DisposableBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private bool isHoverDetectionEnabled = true;
         

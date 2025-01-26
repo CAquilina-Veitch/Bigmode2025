@@ -4,6 +4,7 @@ using R3;
 using Scripts.UI.ButtonPanels;
 using TMPro;
 using UnityEngine;
+using Extensions;
 
 namespace Scripts.UI.Buttons
 {
@@ -20,7 +21,7 @@ namespace Scripts.UI.Buttons
         {
             initialPos = movementTransform.anchoredPosition;
             initialColour = textField.color;
-            IsHovered.Subscribe(OnHover);
+            IsHovered.Subscribe(OnHover).AddTo(this);
         }
 
         private void OnHover(bool isHovering)

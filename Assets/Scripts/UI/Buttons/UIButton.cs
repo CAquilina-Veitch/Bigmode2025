@@ -25,10 +25,10 @@ namespace Scripts.UI.Buttons
             SetButtonActive(isInitiallyActive);
 
             IsHovered.Where(_ => CurrentButtonState.CurrentValue != ButtonState.Disabled).Subscribe(x =>
-                currentButtonState.Value = x ? ButtonState.Hovered : ButtonState.Default);
+                currentButtonState.Value = x ? ButtonState.Hovered : ButtonState.Default).AddTo(this);
 
             button.OnClickAsObservable().Where(_ => CurrentButtonState.CurrentValue is not ButtonState.Disabled)
-                .Subscribe(_ => currentButtonState.Value = ButtonState.Pressed);
+                .Subscribe(_ => currentButtonState.Value = ButtonState.Pressed).AddTo(this);
         }
         
         public virtual void SetButtonActive(bool newIsActive)
