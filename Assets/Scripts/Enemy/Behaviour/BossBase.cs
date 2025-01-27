@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Extensions;
 using R3;
@@ -34,25 +35,53 @@ namespace Scripts.Enemy.Behaviour
             }
             
         }
-
-
+        
         public BossPhase currentPhase;
+        
+        
+        
+        
     }
-    public class BossPhase : ScriptableObject
+    [Serializable] public class BossPhase
     {
         public int HealthRequirement;
+
+        public List<BossPhaseStep> PhaseStep;
+
+
+
+
+
     }
 
-    public class BossAttack
+    [Serializable] public class BossPhaseStep
     {
-        public BaseBossCondition EndCondition;
-        
+        public List<BossAttackData> BossAttacks;
+        public int nextStepOnComplete;
     }
 
-    public class BaseBossCondition
+    [Serializable] public enum NextStepInstruction
     {
-        
+        NextStep,
+        BackAStep,
+        FirstStep
     }
+    [Serializable] public class BossAttackData
+    {
+        [SerializeField] public BossAttack Attack;
+        public NextStepInstruction NextStepInstructionOnComplete;
+    }
+    
+    [Serializable] public abstract class BossAttack : MonoBehaviour
+    {
+        public Observable<Unit> OnAttackFinished => onAttackFinished;
+        private readonly Subject<Unit> onAttackFinished = new();
+
+        public abstract void Attack();
+
+        public void FinishAttack() => onAttackFinished.OnNext(Unit.Default);
+    }
+
 
     public class DelayBossCondition
     {
@@ -63,4 +92,5 @@ namespace Scripts.Enemy.Behaviour
     {
         
     }
+    
 }
