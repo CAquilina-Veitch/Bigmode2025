@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Extensions;
+using R3;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scripts.Enemy.Behaviour
 {
     public class BossPhase : MonoBehaviour
     {
-        public int HealthRequirement;
+        public int GoToNextPhaseWhenHealthIsLessThanThisValue;
 
-        public List<BossPhaseStep> PhaseStep;
-
-
-
-
-
+        public List<BossPhaseStep> PhaseSteps;
+        
     }
 }

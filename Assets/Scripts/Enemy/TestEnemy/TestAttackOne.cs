@@ -1,4 +1,6 @@
 ﻿using System;
+using Extensions;
+using R3;
 
 namespace Scripts.Enemy.Behaviour
 {
@@ -6,7 +8,7 @@ namespace Scripts.Enemy.Behaviour
     {
         public override void Attack()
         {
-            throw new NotImplementedException();
+            Observable.Timer(TimeSpan.FromSeconds(3)).Subscribe(FinishAttack).AddTo(isAttackingDisposable);
         }
     }
 }

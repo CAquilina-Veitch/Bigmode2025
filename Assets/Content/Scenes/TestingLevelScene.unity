@@ -163,8 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64e104141a49f29cebc5b3e1b2441f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthRequirement: 0
-  PhaseStep: []
+  GoToNextPhaseWhenHealthIsLessThanThisValue: 0
+  PhaseSteps: []
 --- !u!1 &765891315
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   - {fileID: 1305745096}
   - {fileID: 574991}
   maxHealth: 0
-  currentPhase: {fileID: 0}
+  hurtBoxes: []
 --- !u!114 &765891319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,15 +333,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64e104141a49f29cebc5b3e1b2441f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthRequirement: 0
-  PhaseStep:
+  GoToNextPhaseWhenHealthIsLessThanThisValue: 0
+  PhaseSteps:
   - BossAttacks:
     - Attack: {fileID: 833432597}
-      phaseStepInstruction: 0
+      phaseStepInstruction: -1
+    - Attack: {fileID: 833432597}
+      phaseStepInstruction: 1
     nextStepOnComplete: 0
-  - BossAttacks:
-    - Attack: {fileID: 833432597}
-      phaseStepInstruction: 0
+  - BossAttacks: []
+    nextStepOnComplete: 0
+  - BossAttacks: []
+    nextStepOnComplete: 0
+  - BossAttacks: []
     nextStepOnComplete: 0
 --- !u!114 &833432597
 MonoBehaviour:
@@ -399,8 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64e104141a49f29cebc5b3e1b2441f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthRequirement: 0
-  PhaseStep: []
+  GoToNextPhaseWhenHealthIsLessThanThisValue: 0
+  PhaseSteps: []
 --- !u!1 &1921052783
 GameObject:
   m_ObjectHideFlags: 0

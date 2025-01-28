@@ -21,6 +21,7 @@ namespace Extensions
             return disposable;
         }
         */
+        public static void OnNext(this Subject<Unit> unit) => unit.OnNext(Unit.Default);
 
         public static RectTransform rectTransform(this Component component) => (RectTransform)component.transform;
     }
