@@ -11,7 +11,7 @@ public class BossMovementBasic : MonoBehaviour
     private bool WasInShootRange = true;
     public GameObject Bullet;
     private Vector3 sideShoot;
-    public Transform Player;
+    public GameObject Player;
 
     void FixedUpdate()
     {
@@ -29,9 +29,9 @@ public class BossMovementBasic : MonoBehaviour
         {
             if (WasInShootRange == false)
             {
-                Shoot();
-                ShootSide(9,-2, 270);
-                ShootSide(-9,-2, 90);
+                //Shoot();
+                //ShootSide(9,-2, 270);
+               // ShootSide(-9,-2, 90);
                 AimedShot();
             }
         }
@@ -39,9 +39,9 @@ public class BossMovementBasic : MonoBehaviour
         {
             if (WasInShootRange == true)
             {
-                Shoot();
-                ShootSide(9, -2, 270);
-                ShootSide(-9, -2, 90);
+                //Shoot();
+                //ShootSide(9, -2, 270);
+                //ShootSide(-9, -2, 90);
                 AimedShot();
                 WasInShootRange = false;
             }
@@ -63,7 +63,10 @@ public class BossMovementBasic : MonoBehaviour
     
     void AimedShot()
     {
-        Instantiate(Bullet, transform.position, Quaternion.Euler(0,0,45));
+        GameObject firedShot = Instantiate(Bullet, transform.position, Quaternion.identity);
+        Vector3 direction = Player.transform.position - firedShot.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        firedShot.transform.rotation = Quaternion.Euler(0, 0, angle+90);
         WasInShootRange = true;
     }
 }

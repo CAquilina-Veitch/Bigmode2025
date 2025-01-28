@@ -8,6 +8,7 @@ public class ShotExploder : MonoBehaviour
 {
     public float bulletSpeed;
     public float breakHeight = -1f;
+    public GameObject exploder;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -20,8 +21,15 @@ public class ShotExploder : MonoBehaviour
     {
         if (transform.position.y < breakHeight)
         {
+            explosion();
             Destroy(gameObject);
         }
     }
+
+    void explosion()
+    {
+        Instantiate(exploder, transform.position, Quaternion.identity);
+    }
+
 
 }
