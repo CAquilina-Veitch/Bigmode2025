@@ -1,6 +1,7 @@
 ﻿using System;
 using Extensions;
 using R3;
+using UnityEngine;
 
 namespace Scripts.Enemy.Behaviour
 {
@@ -9,6 +10,7 @@ namespace Scripts.Enemy.Behaviour
         public override void Attack()
         {
             Observable.Timer(TimeSpan.FromSeconds(3)).Subscribe(FinishAttack).AddTo(isAttackingDisposable);
+            Debug.LogWarning("RAAAAAAAAAAAAAAAAAAH");
         }
     }
 }

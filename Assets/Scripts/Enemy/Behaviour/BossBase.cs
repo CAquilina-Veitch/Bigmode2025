@@ -7,9 +7,8 @@ namespace Scripts.Enemy.Behaviour
 {
     public partial class BossBase : MonoBehaviour
     {
-        [SerializeField] private BossMovementDriver movementDriver;
-
         [SerializeField] private List<BossPhase> Phases;
+        [SerializeField] private Transform playerTransform;
         private int currentBossPhase;
         private int currentBossPhaseStep;
 
@@ -34,34 +33,41 @@ namespace Scripts.Enemy.Behaviour
 
         private void NextPhaseOnHealthMeetsThreshold()
         {
+            Debug.LogWarning("boss health met threshold, now going to phase " + (currentBossPhase + 1));
             currentBossAttack.Attack.ClearAttackDisposable();
             currentBossPhase++;
             if (currentBossPhase >= Phases.Count)
                 Debug.LogError($"{currentBossPhase} is greater than num of phases.", this);
-            
+            healthValueNextPhaseDisposable.Disposable = null;
 
         }
         private void ChooseAttackFromCurrentPhase()
         {
             var currentPhaseStep = Phases[currentBossPhase].PhaseSteps[currentBossPhaseStep];
+            Debug.Log($"getting attack from phase {currentBossPhase}, step {currentBossPhaseStep}");
+            
             currentBossAttack = currentPhaseStep.GetRandomBossAttackData();
+            
+            Debug.Log($"Got Random Attack {currentBossAttack.Attack}");
+            
             currentBossAttack.Attack.OnAttackFinished
                 .Subscribe(_ => OnAttackFinished(currentBossAttack.phaseStepInstruction))
                 .AssignTo(phaseStepInstructionDisposable);
+            
+            currentBossAttack.Attack.DefineTransforms(transform, playerTransform);
             currentBossAttack.Attack.Attack();
-            
-            
-            
         }
 
         private void OnAttackFinished(int phaseStepInstruction)
         {
-            CompletePhaseStepInstruction(phaseStepInstruction);
             phaseStepInstructionDisposable.Disposable = null;
-            CheckPhaseProgress();
+            CompletePhaseStepInstruction(phaseStepInstruction);
+            
         }
         public void CompletePhaseStepInstruction(int instruction)
         {
+            Debug.Log($"instruction step + {instruction}, attempting {currentBossPhaseStep + instruction}");
+            
             currentBossPhaseStep += instruction;
             if (currentBossPhaseStep < 0) 
                 currentBossPhaseStep = 0;
@@ -72,6 +78,7 @@ namespace Scripts.Enemy.Behaviour
                 currentBossPhaseStep = 0;
                 //NextBossPhase();
             }
+            CheckPhaseProgress();
         }
 
     }

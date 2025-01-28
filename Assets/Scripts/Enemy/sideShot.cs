@@ -13,6 +13,7 @@ public class sideShot : BossAttack
     {
         sideShoot = new Vector3(x, y, 0);
         Instantiate(Bullet, sideShoot, Quaternion.Euler(0, 0, rotation));
+        FinishAttack(); // finish instantly to move on to another attack
     }
 
     public override void Attack()

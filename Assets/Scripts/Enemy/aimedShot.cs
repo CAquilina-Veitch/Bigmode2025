@@ -14,47 +14,44 @@ public class aimedShot : BossAttack
     public Vector2 ShootRange;
     private bool WasInShootRange = true;
     public GameObject Bullet;
-    public GameObject Player;
+    public int numberOfShots;
+    private int numberOfShotsLeft;
     void AimedShot()
     {
-        GameObject firedShot = Instantiate(Bullet, transform.position, Quaternion.identity);
-        Vector3 direction = Player.transform.position - firedShot.transform.position;
+        GameObject firedShot = Instantiate(Bullet, bossTransform.position, Quaternion.identity);
+        Vector3 direction = playerTransform.position - firedShot.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         firedShot.transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         WasInShootRange = true;
+        
+        numberOfShotsLeft--;
+        if (numberOfShotsLeft <= 0) 
+            FinishAttack();
     }
     void BossMovementLoop()
     {
-        if (transform.position.x < moveRange.x)
-        {
+        if (bossTransform.position.x < moveRange.x)
             CDirection = Vector3.right;
-        }
-        else if (transform.position.x > moveRange.y)
-        {
+        else if (bossTransform.position.x > moveRange.y) 
             CDirection = Vector3.left;
-        }
-        transform.position += CDirection * moveSpeed;
+        bossTransform.position += CDirection * moveSpeed;
 
-        if (ShootRange.x < transform.position.x && transform.position.x < ShootRange.y)
+        if (ShootRange.x < bossTransform.position.x && bossTransform.position.x < ShootRange.y)
         {
-            if (WasInShootRange == false)
-            {
+            if (WasInShootRange == false) 
                 AimedShot();
-            }
         }
-        else
+        else if (WasInShootRange == true)
         {
-            if (WasInShootRange == true)
-            {
-                AimedShot();
-                WasInShootRange = false;
-            }
+            AimedShot();
+            WasInShootRange = false;
         }
     }
 
     public override void Attack()
     {
-        Observable.IntervalFrame(1).Subscribe(BossMovementLoop);
+        numberOfShotsLeft = numberOfShots;
+        Observable.IntervalFrame(1).Subscribe(BossMovementLoop).AddTo(isAttackingDisposable);
     }
 }
 

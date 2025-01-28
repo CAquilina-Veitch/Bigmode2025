@@ -19,36 +19,29 @@ public class Shot : BossAttack
     }
     void BossMovementLoop()
     {
-        if (transform.position.x < moveRange.x)
-        {
+        if (bossTransform.position.x < moveRange.x)
             CDirection = Vector3.right;
-        }
-        else if (transform.position.x > moveRange.y)
-        {
+        
+        else if (bossTransform.position.x > moveRange.y) 
             CDirection = Vector3.left;
-        }
-        transform.position += CDirection * moveSpeed;
+        
+        bossTransform.position += CDirection * moveSpeed;
 
-        if (ShootRange.x < transform.position.x && transform.position.x < ShootRange.y)
+        if (ShootRange.x < bossTransform.position.x && bossTransform.position.x < ShootRange.y)
         {
-            if (WasInShootRange == false)
-            {
+            if (WasInShootRange == false) 
                 Shoot();
-            }
         }
-        else
-        {
-            if (WasInShootRange == true)
-            {
-                Shoot();
-                WasInShootRange = false;
-            }
+        else if (WasInShootRange == true)
+        { 
+            Shoot(); 
+            WasInShootRange = false;
         }
     }
 
     public override void Attack()
     {
-        Observable.IntervalFrame(1).Subscribe(BossMovementLoop);
-        Observable.Timer(TimeSpan.FromSeconds(3)).Subscribe(FinishAttack).AddTo (this);
+        Observable.IntervalFrame(1).Subscribe(BossMovementLoop).AddTo(isAttackingDisposable);
+        Observable.Timer(TimeSpan.FromSeconds(3)).Subscribe(FinishAttack).AddTo(isAttackingDisposable);
     }
 }
