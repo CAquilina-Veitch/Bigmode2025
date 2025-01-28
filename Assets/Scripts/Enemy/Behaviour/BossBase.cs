@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using Extensions;
 using R3;
+using R3.Triggers;
 using UnityEngine;
 
 namespace Scripts.Enemy.Behaviour
 {
-    public partial class BossBase : DisposableBehaviour
+    public partial class BossBase : MonoBehaviour
     {
         [SerializeField] private BossMovementDriver movementDriver;
 
@@ -20,12 +21,26 @@ namespace Scripts.Enemy.Behaviour
         
     }
 
-    public partial class BossBase : DisposableBehaviour
+    public class BossHurtBox : MonoBehaviour
+    {
+        [SerializeField] private Collider hurtbox;
+
+        private void Awake()
+        {
+            hurtbox.OnCollisionEnterAsObservable().Subscribe().AddTo(this);
+        }
+
+        public ReadOnlyReactiveProperty<Collision> CurrentCollision => currentCollision;
+        private readonly ReactiveProperty<Collision> currentCollision = new();
+    }
+    public partial class BossBase : MonoBehaviour
     {
         [SerializeField] private int maxHealth;
+        [SerializeField] private Collider[] hurtBoxes;
+        
         private readonly ReactiveProperty<int> currentHealth;
         public ReadOnlyReactiveProperty<int> CurrentHealth => currentHealth;
-
+        
         public void TakeDamage(int amount)
         {
             currentHealth.Value -= amount;
@@ -35,29 +50,20 @@ namespace Scripts.Enemy.Behaviour
             }
             
         }
+
+        public BossPhase[] phases;
         
-        public BossPhase currentPhase;
+        private BossPhase currentPhase;
         
         
         
         
-    }
-    [Serializable] public class BossPhase
-    {
-        public int HealthRequirement;
-
-        public List<BossPhaseStep> PhaseStep;
-
-
-
-
-
     }
 
     [Serializable] public class BossPhaseStep
     {
         public List<BossAttackData> BossAttacks;
-        public int nextStepOnComplete;
+        public int nextStepOnComplete = 1;
     }
 
     [Serializable] public enum NextStepInstruction
@@ -66,12 +72,12 @@ namespace Scripts.Enemy.Behaviour
         BackAStep,
         FirstStep
     }
+
     [Serializable] public class BossAttackData
     {
-        [SerializeField] public BossAttack Attack;
-        public NextStepInstruction NextStepInstructionOnComplete;
+        public BossAttack Attack;
+        public int phaseStepInstruction = 1;
     }
-    
     [Serializable] public abstract class BossAttack : MonoBehaviour
     {
         public Observable<Unit> OnAttackFinished => onAttackFinished;
@@ -80,17 +86,6 @@ namespace Scripts.Enemy.Behaviour
         public abstract void Attack();
 
         public void FinishAttack() => onAttackFinished.OnNext(Unit.Default);
-    }
-
-
-    public class DelayBossCondition
-    {
-        
-    }
-    
-    public class TestingFrogBoss : BossBase
-    {
-        
     }
     
 }

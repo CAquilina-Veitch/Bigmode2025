@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Audio
 {
-    public class SoundEffectPlayer : DisposableBehaviour
+    public class SoundEffectPlayer : MonoBehaviour
     {
         [SerializeField] private AudioSource audioSource;
         private AudioClip audioClip;

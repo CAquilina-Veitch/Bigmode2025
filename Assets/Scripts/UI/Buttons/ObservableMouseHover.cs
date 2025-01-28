@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Scripts.UI.Buttons
 {
-    public class ObservableMouseHover : DisposableBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class ObservableMouseHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private bool isHoverDetectionEnabled = true;
         

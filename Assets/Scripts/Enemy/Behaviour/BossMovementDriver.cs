@@ -1,8 +1,9 @@
 ﻿using Extensions;
+using UnityEngine;
 
 namespace Scripts.Enemy.Behaviour
 {
-    public class BossMovementDriver : DisposableBehaviour
+    public class BossMovementDriver : MonoBehaviour
     {
         
     }

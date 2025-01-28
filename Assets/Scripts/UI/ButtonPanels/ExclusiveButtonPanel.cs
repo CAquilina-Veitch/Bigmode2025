@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 namespace Scripts.UI.ButtonPanels
 {
-    public abstract class ExclusiveButtonPanel<T> : DisposableBehaviour
+    public abstract class ExclusiveButtonPanel<T> : MonoBehaviour
     {
         [SerializeField] private List<ValuedUIButton<T>> buttonList;
         [SerializeField] private int defaultHoveredValue = -1;
