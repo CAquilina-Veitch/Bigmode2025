@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 93f01f481fb15a1499db6b8ad7a42d35
+guid: a40d4afc83093e1489c328ee9c1d1ab0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4604146857013224401
-    second: mario_0
+      213: -4820209546863308890
+    second: ButterflyBench(1)_0
+  - first:
+      213: -198410429098949710
+    second: ButterflyBench(1)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mario_0
+      name: ButterflyBench(1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1068
-        height: 1066
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2cdefdc3d8ca10c0800000000000000
-      internalID: -4604146857013224401
+      spriteID: 6af0448a4fc2b1db0800000000000000
+      internalID: -4820209546863308890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ButterflyBench(1)_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b303d514ca1f3df0800000000000000
+      internalID: -198410429098949710
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 92642c6f126cef74096cf9036052dc4e
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mario_0: -4604146857013224401
+      ButterflyBench(1)_0: -4820209546863308890
+      ButterflyBench(1)_1: -198410429098949710
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
