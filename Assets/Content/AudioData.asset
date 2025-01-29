@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: AudioData
+  m_EditorClassIdentifier: Assembly-CSharp:Audio:AudioStorage
+  tracks:
+  - trackIDName: 0
+    clip: {fileID: 0}
+    volumeMultiplier: 0
+    doesLoop: 0
+  sounds:
+  - soundEffectName: 6
+    clip: {fileID: 8300000, guid: cc4b2be10a9219949bb474e17c3fad28, type: 3}
+    volumeMultiplier: 1
+  - soundEffectName: 5
+    clip: {fileID: 8300000, guid: dd5f3d27ea9f4d94a95abfe3fcce5587, type: 3}
+    volumeMultiplier: 0.3
+  - soundEffectName: 7
+    clip: {fileID: 8300000, guid: 045de7cad63cc304a854925705152441, type: 3}
+    volumeMultiplier: 3
+  - soundEffectName: 3
+    clip: {fileID: 8300000, guid: cc4b2be10a9219949bb474e17c3fad28, type: 3}
+    volumeMultiplier: 1
+  - soundEffectName: 4
+    clip: {fileID: 8300000, guid: 080331243a32061449bef036e3f368c4, type: 3}
+    volumeMultiplier: 1
+  - soundEffectName: 0
+    clip: {fileID: 0}
+    volumeMultiplier: 1
+  - soundEffectName: 0
+    clip: {fileID: 0}
+    volumeMultiplier: 1
+  - soundEffectName: 0
+    clip: {fileID: 0}
+    volumeMultiplier: 1
+  - soundEffectName: 0
+    clip: {fileID: 0}
+    volumeMultiplier: 1

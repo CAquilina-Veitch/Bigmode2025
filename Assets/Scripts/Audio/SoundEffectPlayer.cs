@@ -1,30 +1,26 @@
 ﻿using System;
-using Extensions;
-using R3;
 using UnityEngine;
 
 namespace Audio
 {
     public class SoundEffectPlayer : MonoBehaviour
     {
-        [SerializeField] private AudioSource audioSource;
-        private AudioClip audioClip;
-        private float volumeMultiplier;
-        
-        public void PlaySound(AudioClip sound, float newVolumeMultiplier = 1, float pitch = 1)
+        [SerializeField] private SoundEffectType soundEffect = SoundEffectType.None;
+        [SerializeField] private float volumeMultiplier = 1;
+        [SerializeField] private float pitchMult = 1;
+        [SerializeField] private bool playOnEnable = false;
+        private void OnEnable()
         {
-            volumeMultiplier = newVolumeMultiplier;
-            AudioManager.GameVolume.Subscribe(SetSourceVolume).AddTo(this);
-            AudioManager.SFXVolume.Subscribe(SetSourceVolume).AddTo(this);
-            SetSourceVolume();
-            audioSource.clip = sound;
-            audioSource.pitch = pitch;
-            audioSource.Play();
-            Observable.Timer(TimeSpan.FromSeconds(sound.length + 0.1f)).Subscribe(_ => Destroy(gameObject)).AddTo(this);
+            if (playOnEnable)
+                PlaySoundEffect(soundEffect, volumeMultiplier, pitchMult);
         }
 
-        private void SetSourceVolume() => audioSource.volume = AudioManager.GameVolume.CurrentValue * 
-                                                               AudioManager.SFXVolume.CurrentValue *
-                                                               volumeMultiplier;
+        public void PlaySoundEffect(SoundEffectType sfx = SoundEffectType.None, float volume = -1f, float pitch = -100)
+        {
+            sfx = sfx is SoundEffectType.None ? soundEffect : sfx;
+            volume = volume < 0 ? volumeMultiplier : volume;
+            pitch = pitch < -50 ? pitchMult : pitch;
+            AudioManager.PlaySFX(sfx, volume, pitch);
+        }
     }
 }

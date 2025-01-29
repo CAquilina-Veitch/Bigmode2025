@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using DG.Tweening;
 using Extensions;
 using Scripts.UI.Buttons;
@@ -14,6 +15,7 @@ namespace Scripts.UI.ButtonPanels
         [SerializeField] private RectTransform cursorImageRectTransform;
         [SerializeField] private float cursorPunchScale = 2;
         [SerializeField] private float cursorPunchDuration;
+        [SerializeField] private SoundEffectPlayer sfxPlayer; 
         public enum MainMenuButtons
         {
             Null,
@@ -30,6 +32,12 @@ namespace Scripts.UI.ButtonPanels
             Debug.Log("Button pressed: " + buttonPressed);
             cursorImageRectTransform.localScale = Vector3.one;
             cursorImageRectTransform.DOPunchScale(Vector3.one * cursorPunchScale, cursorPunchDuration);
+
+            var clickSound = button.Value is MainMenuButtons.NewGame or MainMenuButtons.Continue
+                ? SoundEffectType.StartGame
+                : SoundEffectType.UISelect;
+            sfxPlayer.PlaySoundEffect(clickSound);
+            
             switch (buttonPressed)
             {
                 case MainMenuButtons.Continue:
@@ -52,6 +60,11 @@ namespace Scripts.UI.ButtonPanels
         {
             cursor.rectTransform().anchoredPosition = 
                 new Vector2(cursor.rectTransform().anchoredPosition.x, button.rectTransform().anchoredPosition.y);
+            
+            Debug.Log(sfxPlayer);
+            if (sfxPlayer == null) return;
+            
+            sfxPlayer.PlaySoundEffect(sfx: SoundEffectType.UIClick);
         }
     }
 }

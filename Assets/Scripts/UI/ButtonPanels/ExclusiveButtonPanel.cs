@@ -17,10 +17,10 @@ namespace Scripts.UI.ButtonPanels
         {
             foreach (var button in buttonList)
             {
-                button.CurrentButtonState.Where(x => x is ButtonState.Pressed)
+                button.CurrentButtonState.Where(x => x is ButtonState.Pressed).Skip(1)
                     .Subscribe(_ => OnButtonPressed(button)).AddTo(this);
 
-                button.CurrentButtonState.Where(x => x is ButtonState.Hovered)
+                button.CurrentButtonState.Where(x => x is ButtonState.Hovered).Skip(1)
                     .Subscribe(_ => OnButtonHovered(button)).AddTo(this);
             }
 
