@@ -20,13 +20,13 @@ MonoBehaviour:
   sounds:
   - soundEffectName: 6
     clip: {fileID: 8300000, guid: cc4b2be10a9219949bb474e17c3fad28, type: 3}
-    volumeMultiplier: 1
+    volumeMultiplier: 0.4
   - soundEffectName: 5
     clip: {fileID: 8300000, guid: dd5f3d27ea9f4d94a95abfe3fcce5587, type: 3}
     volumeMultiplier: 0.3
   - soundEffectName: 7
     clip: {fileID: 8300000, guid: 045de7cad63cc304a854925705152441, type: 3}
-    volumeMultiplier: 3
+    volumeMultiplier: 5
   - soundEffectName: 3
     clip: {fileID: 8300000, guid: cc4b2be10a9219949bb474e17c3fad28, type: 3}
     volumeMultiplier: 1

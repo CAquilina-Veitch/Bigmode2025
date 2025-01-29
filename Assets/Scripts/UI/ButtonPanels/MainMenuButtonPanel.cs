@@ -61,7 +61,6 @@ namespace Scripts.UI.ButtonPanels
             cursor.rectTransform().anchoredPosition = 
                 new Vector2(cursor.rectTransform().anchoredPosition.x, button.rectTransform().anchoredPosition.y);
             
-            Debug.Log(sfxPlayer);
             if (sfxPlayer == null) return;
             
             sfxPlayer.PlaySoundEffect(sfx: SoundEffectType.UIClick);
