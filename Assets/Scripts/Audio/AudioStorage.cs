@@ -19,6 +19,8 @@ namespace Audio
         PunchedAway,
         Good,
         Evil,
+        Jump,
+        GameOver,
     }
 
     [Serializable]

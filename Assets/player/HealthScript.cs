@@ -5,6 +5,7 @@ using R3;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using Ext = Extensions.Extensions;
 
 public class HealthScript : MonoBehaviour
@@ -12,7 +13,8 @@ public class HealthScript : MonoBehaviour
     public ReactiveProperty<int>Health = new(3);
     public int maxHealth = 3;
     //death
-    public float timeToDie = 2f;
+    public float timeToDie = 5f;
+  
     //invuln
     public float invTime = 1f;
     public bool invuln = false;
@@ -53,6 +55,8 @@ public class HealthScript : MonoBehaviour
 
     private void Dead()
     {
-        gameObject.SetActive(false);
+        SceneManager.LoadScene("MainMenu");
     }
+
+
 }

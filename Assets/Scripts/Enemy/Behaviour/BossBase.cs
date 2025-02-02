@@ -113,6 +113,7 @@ namespace Scripts.Enemy.Behaviour
         [SerializeField] private Collider2D[] hurtBoxes;
         private bool isOnHitCooldown;
         private float hitCooldownTime = 0.25f;
+        public bool jumpReady = true;
 
         private readonly ReactiveProperty<int> currentHealth = new();
         public ReadOnlyReactiveProperty<int> CurrentHealth => currentHealth;
@@ -153,6 +154,21 @@ namespace Scripts.Enemy.Behaviour
             soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit);
             TakeDamage(1);
         }
+        //scuffed ass jump sfx hahaha if it works it works :3
+        private void Update()
+        {           
+            if (jumpReady == true && animator.GetBool("jumping") == true)
+            {
+                //Debug.Log("jump played");
+                soundEffectPlayer.PlaySoundEffect(SoundEffectType.Jump);
+                jumpReady = false;
+            }
+            if (animator.GetBool("jumping") == false)
+            {
+                jumpReady = true;
+            }
 
+
+        }
     }
 }

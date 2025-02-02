@@ -18,8 +18,8 @@ MonoBehaviour:
     volumeMultiplier: 0.5
     doesLoop: 1
   - trackIDName: 3
-    clip: {fileID: 8300000, guid: 473384256584eb54c999844c41cb1875, type: 3}
-    volumeMultiplier: 1
+    clip: {fileID: 8300000, guid: e563420118cf9b042aac34e1112de7ab, type: 3}
+    volumeMultiplier: 0.3
     doesLoop: 1
   sounds:
   - soundEffectName: 2
@@ -40,3 +40,9 @@ MonoBehaviour:
   - soundEffectName: 4
     clip: {fileID: 8300000, guid: 9570ee51b363fcb41a0855e06314dcc6, type: 3}
     volumeMultiplier: 0.1
+  - soundEffectName: 12
+    clip: {fileID: 8300000, guid: 8c5b19d24175ac248b55866f2dacbdcd, type: 3}
+    volumeMultiplier: 0.25
+  - soundEffectName: 13
+    clip: {fileID: 8300000, guid: bbe0c0cdf72a6ff47b5634ff48591618, type: 3}
+    volumeMultiplier: 0.3

@@ -11,6 +11,7 @@ public class JumpAttack : BossAttack
     public float jumpStartTimer = 0f;
     [SerializeField] float acceleration;
     public Animator animator;
+
     private void Start()
     {
         acceleration = 0f;    
@@ -21,17 +22,19 @@ public class JumpAttack : BossAttack
 
         if (jumpNumber != 0f)
         {
-            animator.SetBool("jumping", true);
+            
 
             if (acceleration >= 0f && jumpStartTimer >= 1f)
             {
                 acceleration += 1.5f * Time.deltaTime;
-              
+                animator.SetBool("jumping", true);
             }
 
             if (acceleration == 0f)
             {
-                jumpStartTimer += 3f * Time.deltaTime;
+                jumpStartTimer += 2f * Time.deltaTime;
+                animator.SetBool("jumping", false);
+                animator.SetBool("jumpPrep", true);
             }
           
         }
@@ -40,6 +43,7 @@ public class JumpAttack : BossAttack
         if (jumpNumber == 0f)
         {
             animator.SetBool("jumping", false);
+            animator.SetBool("jumpPrep", false);
             bossTransform.rotation = Quaternion.identity;
             
         }
@@ -87,15 +91,22 @@ public class JumpAttack : BossAttack
             jumpNumber = 0;
             jumpStartTimer = 0f;
             acceleration = 0f;
-        }      
+        }
 
         if (jumpNumber == 0)
+        {
+           
+            animator.SetBool("jumping", false);
+            animator.SetBool("jumpPrep", false);
             FinishAttack();
+        }
     }
     public override void Attack()
     {
+        
         bossTransform.rotation = Quaternion.identity;
         jumpNumber = 1;
         Observable.IntervalFrame(1).Subscribe(BossMovementLoop).AddTo(isAttackingDisposable);
+        
     }
 }

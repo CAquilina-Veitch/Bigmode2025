@@ -1,4 +1,5 @@
 using Audio;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class playerController : MonoBehaviour
 {
     PlayerControls playerControls;
 
+    public Rigidbody2D rb;
     public PlayerInput Input;
     public Vector2 inputVector;
     public Vector3 moveVector;
@@ -94,6 +96,7 @@ public class playerController : MonoBehaviour
                 attackAreaR.SetActive(attackingR);
             }
         }
+     
     }
 
     public void Kill()
@@ -101,6 +104,7 @@ public class playerController : MonoBehaviour
         isDead = true;
         attackAreaL.SetActive(false);
         attackAreaR.SetActive(false);
-
+        soundEffectPlayer.PlaySoundEffect(SoundEffectType.GameOver);      
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 }

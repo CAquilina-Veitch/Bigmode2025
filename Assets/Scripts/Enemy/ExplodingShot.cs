@@ -23,7 +23,7 @@ public class ExplodingShot : BossAttack
         else if (bossTransform.position.x > moveRange.y) 
             CDirection = Vector3.left;
         
-        bossTransform.position += CDirection * moveSpeed;
+        bossTransform.position += CDirection * moveSpeed * Time.deltaTime;
 
         if (shootRange.x < bossTransform.position.x && bossTransform.position.x < shootRange.y)
         {
