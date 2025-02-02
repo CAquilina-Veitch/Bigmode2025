@@ -22,7 +22,7 @@ public class HealthScript : MonoBehaviour
 
     public void OnEnable()
     {
-        Health = maxHealth;
+        Health.Value = maxHealth;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -36,11 +36,11 @@ public class HealthScript : MonoBehaviour
 
     private void OnTakeDamage()
     {
-        Health--;
+        Health.Value--;
         soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit, pitch: 0.65f);
         invuln = true;
         Observable.Timer(TimeSpan.FromSeconds(invTime)).Subscribe(_ => invuln = false).AddTo(this);
-        if (Health <= 0)
+        if (Health.Value <= 0)
             OnDead();
             
     }
