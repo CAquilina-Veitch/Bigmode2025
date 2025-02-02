@@ -583,14 +583,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695a3df39f9158f4e91144682c86e6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 3
+  maxHealth: 3
   timeToDie: 2
-  deathTimer: 0
-  dead: 0
   invTime: 1
-  invTimer: 0
   invuln: 0
   soundEffectPlayer: {fileID: 4650706661545637595}
+  player: {fileID: 7902101556270293703}
   myRigidBody: {fileID: 6171385789915232091}
 --- !u!95 &403839281237075315
 Animator:

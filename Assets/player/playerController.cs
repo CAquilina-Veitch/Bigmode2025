@@ -20,6 +20,7 @@ public class playerController : MonoBehaviour
     private GameObject attackAreaR = default;
     private float timerR = 0;
     public SoundEffectPlayer soundEffectPlayer;
+    private bool isDead;
     void Awake()
     {
         Input = GetComponent<PlayerInput>();
@@ -36,6 +37,7 @@ public class playerController : MonoBehaviour
   
     private void OnMove(InputValue InputValue)
     {
+        if (isDead) return;
         inputVector = InputValue.Get<Vector2>();
         moveVector.x = inputVector.x;
         moveVector.y = inputVector.y;
@@ -68,6 +70,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         Move();
+        if (isDead) return;
 
         if (attackingL)
         {
@@ -91,5 +94,13 @@ public class playerController : MonoBehaviour
                 attackAreaR.SetActive(attackingR);
             }
         }
+    }
+
+    public void Kill()
+    {
+        isDead = true;
+        attackAreaL.SetActive(false);
+        attackAreaR.SetActive(false);
+
     }
 }

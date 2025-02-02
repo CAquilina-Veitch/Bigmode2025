@@ -18,6 +18,7 @@ public class HealthScript : MonoBehaviour
     public bool invuln = false;
     public SoundEffectPlayer soundEffectPlayer;
 
+    public playerController player;
     public Rigidbody2D myRigidBody;
 
     public void OnEnable()
@@ -27,7 +28,6 @@ public class HealthScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Coillided with " + collision.tag);
         if (!collision.CompareTag(Ext.GameTag(GameTags.Boss))) return;
         
         if (invuln == false) 
@@ -48,6 +48,7 @@ public class HealthScript : MonoBehaviour
     private void OnDead()
     {
         Observable.Timer(TimeSpan.FromSeconds(timeToDie)).Subscribe(Dead).AddTo(this);
+        player.Kill();
     }
 
     private void Dead()

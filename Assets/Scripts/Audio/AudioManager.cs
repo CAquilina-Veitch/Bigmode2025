@@ -82,6 +82,7 @@ namespace Audio
             Instance.musicAudioSource.loop = newTrack.doesLoop;
 
             Instance.musicPlayingDisposable.Clear();
+            Instance.musicAudioSource.Play();
             Instance.StopAllMusic.Subscribe(Instance.StopCurrentSong).AddTo(Instance.musicPlayingDisposable);
             if (!newTrack.doesLoop) 
                 Observable.Timer(TimeSpan.FromSeconds(newTrack.clip.length)).Subscribe(OnMusicEnded).AddTo(Instance.musicPlayingDisposable);
