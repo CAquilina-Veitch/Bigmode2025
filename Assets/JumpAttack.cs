@@ -49,6 +49,7 @@ public class JumpAttack : BossAttack
         if (jumpNumber == 1f && bossTransform.position.x <= -moveRange.x)
         {
             bossTransform.rotation = Quaternion.Euler(bossTransform.rotation.eulerAngles + (new Vector3(0, 0, -90)));
+            bossTransform.position = new Vector3(-moveRange.x, bossTransform.position.y, bossTransform.position.z);
             jumpNumber = 2;
             jumpStartTimer = 0f;
             acceleration = 0f;       
@@ -59,6 +60,7 @@ public class JumpAttack : BossAttack
         if (jumpNumber == 2f && bossTransform.position.y >= moveRange.y)
         {
             bossTransform.rotation = Quaternion.Euler(bossTransform.rotation.eulerAngles + (new Vector3(0, 0, -90)));
+            bossTransform.position = new Vector3(bossTransform.position.x, moveRange.y, bossTransform.position.z);
             jumpNumber = 3;
             jumpStartTimer = 0f;
             acceleration = 0f;
@@ -69,6 +71,8 @@ public class JumpAttack : BossAttack
         if (jumpNumber == 3f && bossTransform.position.x >= moveRange.x)
         {
             bossTransform.rotation = Quaternion.Euler(bossTransform.rotation.eulerAngles + (new Vector3(0, 0, -90)));
+            bossTransform.position = new Vector3(moveRange.x, bossTransform.position.y, bossTransform.position.z);
+
             jumpNumber = 4;
             jumpStartTimer = 0f;
             acceleration = 0f;
@@ -79,6 +83,7 @@ public class JumpAttack : BossAttack
         if (jumpNumber == 4f && bossTransform.position.y <= -moveRange.y)
         {
             bossTransform.rotation = Quaternion.Euler(bossTransform.rotation.eulerAngles + (new Vector3(0, 0, -90)));
+            bossTransform.position = new Vector3(bossTransform.position.x, -moveRange.y,bossTransform.position.z);
             jumpNumber = 0;
             jumpStartTimer = 0f;
             acceleration = 0f;

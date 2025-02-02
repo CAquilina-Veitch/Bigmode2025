@@ -124,19 +124,22 @@ namespace Scripts.Enemy.Behaviour
             isOnHitCooldown = true;
             Observable.Timer(TimeSpan.FromSeconds(hitCooldownTime)).Subscribe(_ => isOnHitCooldown = false).AddTo(this);
             if (currentHealth.CurrentValue <= 0) 
-                Debug.LogWarning("Boss died;");
-            
+                OnDeath();
         }
 
+        private void OnDeath()
+        {
+            Debug.LogWarning("Boss died;");
+        }
         private void SubscribeToHurtboxes()
         {
             foreach (var hurtBox in hurtBoxes)
             {
-                hurtBox.OnTriggerStay2DAsObservable().Subscribe(OnTriggerStay).AddTo(this);
+                hurtBox.OnTriggerStay2DAsObservable().Subscribe(OnTriggerStaying).AddTo(this);
             }
         }
 
-        private void OnTriggerStay(Collider2D collision2D)
+        private void OnTriggerStaying(Collider2D collision2D)
         {
             if (isOnHitCooldown) return;
             
@@ -146,6 +149,7 @@ namespace Scripts.Enemy.Behaviour
 
         private void OnHit()
         {
+            Debug.LogWarning("Boss took damage");
             soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit);
             TakeDamage(1);
         }
