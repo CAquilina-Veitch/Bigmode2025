@@ -1,5 +1,6 @@
 using Audio;
 using Extensions;
+using R3;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,7 +8,7 @@ using Ext = Extensions.Extensions;
 
 public class HealthScript : MonoBehaviour
 {
-    public float Health = 3f;
+    public ReactiveProperty<int>Health = new(3);
     //death
     public float timeToDie = 2f;
     public float deathTimer;
@@ -22,7 +23,7 @@ public class HealthScript : MonoBehaviour
 
     public void OnEnable()
     {
-        Health = 3f;
+        Health.Value = 3;
         deathTimer = 0f;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,13 +31,13 @@ public class HealthScript : MonoBehaviour
         if(collision.tag == Ext.GameTag(GameTags.Boss))
         if (invuln == false)
         {
-            Health += -1;
+            Health.Value += -1;
             soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit, pitch: 0.65f);
         }
 
         invuln = true;
 
-        if (Health <= 0)
+        if (Health.Value <= 0)
         {
             dead = true;
         }
@@ -46,13 +47,13 @@ public class HealthScript : MonoBehaviour
 
         if (invuln == false)
         {
-            Health += -1;
+            Health.Value += -1;
             soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit, pitch: 0.65f);
         }
 
         invuln = true;
 
-        if (Health <= 0)
+        if (Health.Value <= 0)
         {
             dead = true;
         }

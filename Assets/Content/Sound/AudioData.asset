@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a2cf1ce5c940d78edaf5fd17b6dcea, type: 3}
   m_Name: AudioData
   m_EditorClassIdentifier: 
-  tracks: []
+  tracks:
+  - trackIDName: 1
+    clip: {fileID: 8300000, guid: 080331243a32061449bef036e3f368c4, type: 3}
+    volumeMultiplier: 1
+    doesLoop: 1
   sounds:
   - soundEffectName: 2
     clip: {fileID: 8300000, guid: 777cdb487ba4ae94fb65fbcb68ab1191, type: 3}

@@ -18,7 +18,7 @@ namespace Scripts.UI.ButtonPanels
         [SerializeField] private float cursorPunchDuration;
         [SerializeField] private SoundEffectPlayer sfxPlayer;
 
-        [SerializeField] private string Start;
+        [SerializeField] private string MainLevelScene;
 
         public enum MainMenuButtons
         {
@@ -49,7 +49,7 @@ namespace Scripts.UI.ButtonPanels
                 case MainMenuButtons.Continue:
                     break;
                 case MainMenuButtons.NewGame:
-                    SceneManager.LoadScene(Start);
+                    SceneManager.LoadScene(MainLevelScene);
                     break;
                 case MainMenuButtons.Options:
                     break;
