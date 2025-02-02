@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Audio;
 using Extensions;
 using R3;
+using R3.Triggers;
 using UnityEngine;
 
 namespace Scripts.Enemy.Behaviour
@@ -10,6 +13,7 @@ namespace Scripts.Enemy.Behaviour
     {
         [SerializeField] private List<BossPhase> Phases;
         [SerializeField] private Transform playerTransform;
+        public Animator animator;
         public SoundEffectPlayer soundEffectPlayer;
         private int currentBossPhase;
         private int currentBossPhaseStep;
@@ -19,9 +23,22 @@ namespace Scripts.Enemy.Behaviour
         private readonly SerialDisposable phaseStepInstructionDisposable = new();
         private readonly SerialDisposable healthValueNextPhaseDisposable = new();
 
+        private string playerTag = Extensions.Extensions.GameTag(GameTags.PlayerAttack);
+        private void Awake()
+        {
+            foreach (var atk in 
+                     from phase in Phases 
+                     from step in phase.PhaseSteps 
+                     from atk in step.BossAttacks 
+                     select atk)
+                atk.Attack.DefineTransforms(this, playerTransform);
+            currentHealth.Value = maxHealth;
+        }
+
         public void Start()
         {
             CheckPhaseProgress();
+            SubscribeToHurtboxes();
         }
 
         private void CheckPhaseProgress()
@@ -46,17 +63,15 @@ namespace Scripts.Enemy.Behaviour
         private void ChooseAttackFromCurrentPhase()
         {
             var currentPhaseStep = Phases[currentBossPhase].PhaseSteps[currentBossPhaseStep];
-            Debug.Log($"getting attack from phase {currentBossPhase}, step {currentBossPhaseStep}");
             
             currentBossAttack = currentPhaseStep.GetRandomBossAttackData();
             
-            Debug.Log($"Got Random Attack {currentBossAttack.Attack}");
+            Debug.Log($"getting attack from phase {currentBossPhase}, step {currentBossPhaseStep}, now doing: {currentBossAttack.Attack}");
             
             currentBossAttack.Attack.OnAttackFinished
                 .Subscribe(_ => OnAttackFinished(currentBossAttack.phaseStepInstruction))
                 .AssignTo(phaseStepInstructionDisposable);
             
-            currentBossAttack.Attack.DefineTransforms(transform, playerTransform);
             currentBossAttack.Attack.Attack();
         }
 
@@ -68,8 +83,6 @@ namespace Scripts.Enemy.Behaviour
         }
         public void CompletePhaseStepInstruction(int instruction)
         {
-            Debug.Log($"instruction step + {instruction}, attempting {currentBossPhaseStep + instruction}");
-            
             currentBossPhaseStep += instruction;
             if (currentBossPhaseStep < 0) 
                 currentBossPhaseStep = 0;
@@ -97,21 +110,45 @@ namespace Scripts.Enemy.Behaviour
     public partial class BossBase : MonoBehaviour
     {
         [SerializeField] private int maxHealth;
-        [SerializeField] private Collider[] hurtBoxes;
-        
-        private readonly ReactiveProperty<int> currentHealth;
+        [SerializeField] private Collider2D[] hurtBoxes;
+        private bool isOnHitCooldown;
+        private float hitCooldownTime = 0.25f;
+
+        private readonly ReactiveProperty<int> currentHealth = new();
         public ReadOnlyReactiveProperty<int> CurrentHealth => currentHealth;
+        
         
         public void TakeDamage(int amount)
         {
             currentHealth.Value -= amount;
-            if (currentHealth.CurrentValue <= 0)
-            {
-                
-            }
+            isOnHitCooldown = true;
+            Observable.Timer(TimeSpan.FromSeconds(hitCooldownTime)).Subscribe(_ => isOnHitCooldown = false).AddTo(this);
+            if (currentHealth.CurrentValue <= 0) 
+                Debug.LogWarning("Boss died;");
             
         }
-        
-        
+
+        private void SubscribeToHurtboxes()
+        {
+            foreach (var hurtBox in hurtBoxes)
+            {
+                hurtBox.OnTriggerStay2DAsObservable().Subscribe(OnTriggerStay).AddTo(this);
+            }
+        }
+
+        private void OnTriggerStay(Collider2D collision2D)
+        {
+            if (isOnHitCooldown) return;
+            
+            if (collision2D.CompareTag(playerTag)) 
+                OnHit();
+        }
+
+        private void OnHit()
+        {
+            soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit);
+            TakeDamage(1);
+        }
+
     }
 }

@@ -11,15 +11,16 @@ namespace Scripts.Enemy.Behaviour
     }
     [Serializable] public abstract class BossAttack : MonoBehaviour
     {
-        protected Transform bossTransform;
+        protected BossBase bossBase;
+        protected Transform bossTransform => bossBase.transform;
         protected Transform playerTransform;
         protected readonly CompositeDisposable isAttackingDisposable = new();
         public Observable<Unit> OnAttackFinished => onAttackFinished;
         private readonly Subject<Unit> onAttackFinished = new();
 
-        public void DefineTransforms(Transform boss, Transform player)
+        public void DefineTransforms(BossBase boss, Transform player)
         {
-            bossTransform = boss;
+            bossBase = boss;
             playerTransform = player;
         }
         public abstract void Attack();
@@ -31,10 +32,10 @@ namespace Scripts.Enemy.Behaviour
             onAttackFinished.OnNext(Unit.Default);
         }
 
-        public void ClearAttackDisposable()
-        {
-            Debug.LogWarning("clearing attackDisposable");
+        public void ClearAttackDisposable() => 
             isAttackingDisposable.Clear();
-        }
+
+        public void OnDestroy() => 
+            ClearAttackDisposable();
     }
 }

@@ -18,7 +18,6 @@ public class JumpAttack : BossAttack
     }
     void BossMovementLoop()
     {
-        Debug.Log("jump thing happen");
 
         if (jumpNumber != 0f)
         {

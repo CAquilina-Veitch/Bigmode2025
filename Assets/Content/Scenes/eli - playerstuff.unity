@@ -420,9 +420,9 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &216333094
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -682,6 +682,75 @@ PolygonCollider2D:
       - {x: -0.1, y: -0.2}
       - {x: 0.1, y: -0.2}
   m_UseDelaunayMesh: 0
+--- !u!1001 &1092541660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 287956134159508286, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: playerTransform
+      value: 
+      objectReference: {fileID: 216333087}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 967145068028079494, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706830684725160061, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_Name
+      value: Boss Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5706830684725160061, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678022927642026944, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 371fcc5820a0fa243809d56ddfa24eb0, type: 3}
 --- !u!1 &1107110357
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +762,6 @@ GameObject:
   - component: {fileID: 1107110359}
   - component: {fileID: 1107110358}
   - component: {fileID: 1107110360}
-  - component: {fileID: 1107110361}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -817,19 +885,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1107110361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107110357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192caf07a02f4e84c9c8a9e8feedc90f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 15
 --- !u!1 &1244132959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,3 +1147,4 @@ SceneRoots:
   - {fileID: 1353242649748965807}
   - {fileID: 1107110359}
   - {fileID: 15971059}
+  - {fileID: 1092541660}

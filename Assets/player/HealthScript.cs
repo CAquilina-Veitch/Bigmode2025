@@ -1,7 +1,9 @@
 using Audio;
+using Extensions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Ext = Extensions.Extensions;
 
 public class HealthScript : MonoBehaviour
 {
@@ -25,6 +27,7 @@ public class HealthScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {      
+        if(collision.tag == Ext.GameTag(GameTags.Boss))
         if (invuln == false)
         {
             Health += -1;
@@ -40,7 +43,6 @@ public class HealthScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("collision");
 
         if (invuln == false)
         {

@@ -13,7 +13,7 @@ public class playerController : MonoBehaviour
     //attack L
     private GameObject attackAreaL = default;
     private bool attackingL = false;
-    private float timeToAttack = 0.25f;
+    private readonly float timeToAttack = 0.25f;
     private float timerL = 0;
     //attack R
     private bool attackingR = false;
@@ -56,7 +56,7 @@ public class playerController : MonoBehaviour
     }
     public void Move()
     {
-        transform.position = transform.position + (moveVector * Time.deltaTime * moveSpeed);
+        transform.position = transform.position + (moveVector * (Time.deltaTime * moveSpeed));
     }
 
     void Start()

@@ -23,6 +23,30 @@ namespace Extensions
         */
         public static void OnNext(this Subject<Unit> unit) => unit.OnNext(Unit.Default);
 
+    }
+
+    public enum GameTags
+    {
+        Player = 3,
+        PlayerAttack = 6,
+        Boss = 7
+    }
+    public static class Extensions
+    {
         public static RectTransform rectTransform(this Component component) => (RectTransform)component.transform;
+
+        public static string GameTag(GameTags tag)
+        {
+            switch (tag)
+            {
+                case GameTags.Player:
+                    return "Player";
+                case GameTags.PlayerAttack:
+                    return "PlayerAttack";
+                case GameTags.Boss:
+                    return "Boss";
+            }
+            return "Default";
+        }
     }
 }
