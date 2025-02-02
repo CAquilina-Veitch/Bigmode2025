@@ -33,7 +33,7 @@ namespace Scripts.Enemy.Behaviour
 
         public void ClearAttackDisposable()
         {
-            Debug.LogWarning("clearing attackdisposable");
+            Debug.LogWarning("clearing attackDisposable");
             isAttackingDisposable.Clear();
         }
     }
