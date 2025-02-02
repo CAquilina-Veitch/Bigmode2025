@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class sideShot : BossAttack
 {
-    public Vector2 moveRange;
-    public float moveSpeed;
-    public Vector2 ShootRange;
     public GameObject Bullet;
     private Vector3 sideShoot;
+    public int numProjectile;
 
     void ShootSide(float x, float y, float rotation)
     {
@@ -18,6 +16,12 @@ public class sideShot : BossAttack
 
     public override void Attack()
     {
-        ShootSide(-9, -2, 90);
+        for (int i = 0; i < numProjectile; i++)
+        {
+            float ypos = Random.Range(-3f, 3f);
+            int xpos = Random.Range(0, 2);
+            xpos = xpos == 0 ? -1 : 1;
+            ShootSide(xpos*6, ypos, xpos*-90);
+        }
     }
 }

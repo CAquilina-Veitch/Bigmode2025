@@ -2,6 +2,7 @@
 using Audio;
 using Scripts.UI.Buttons;
 using UnityEngine;
+using static Scripts.UI.ButtonPanels.MainMenuButtonPanel;
 
 namespace Scripts.UI.ButtonPanels
 {
@@ -23,8 +24,13 @@ namespace Scripts.UI.ButtonPanels
             var buttonPressed = button.Value;
             Debug.Log("Button pressed: " + buttonPressed);
 
-            sfxPlayer.PlaySoundEffect(SoundEffectType.UIClick);
-            
+            int GoodOrEvil = UnityEngine.Random.Range(0, 2);
+
+            var clickSound = button.Value is PauseButtons.Continue
+                ? SoundEffectType.MenuSelect
+                : (GoodOrEvil == 0 ? SoundEffectType.Good : SoundEffectType.Evil);
+            sfxPlayer.PlaySoundEffect(clickSound);
+
             switch (buttonPressed)
             {
                 case PauseButtons.Null:
@@ -48,7 +54,7 @@ namespace Scripts.UI.ButtonPanels
         {
             if (sfxPlayer == null) return;
             
-            sfxPlayer.PlaySoundEffect(sfx: SoundEffectType.UIClick);
+            sfxPlayer.PlaySoundEffect(sfx: SoundEffectType.MenuHover);
         }
         
     }
