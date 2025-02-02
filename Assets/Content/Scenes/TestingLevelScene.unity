@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 765891316}
   - component: {fileID: 765891318}
   - component: {fileID: 765891319}
+  - component: {fileID: 765891320}
   m_Layer: 0
   m_Name: Boss Enemy
   m_TagString: Untagged
@@ -356,12 +357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 265e16fd260b24e4ca6481d860183c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDriver: {fileID: 0}
   Phases:
   - {fileID: 833432596}
   - {fileID: 1305745096}
   - {fileID: 574991}
   playerTransform: {fileID: 755237733}
+  soundEffectPlayer: {fileID: 765891320}
   maxHealth: 5
   hurtBoxes: []
 --- !u!114 &765891319
@@ -376,6 +377,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64de240c714b4daa8ef0db7823d73e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &765891320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765891315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8491e3db2637429882173bfac2f20205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: 0
+  volumeMultiplier: 1
+  pitchMult: 1
+  playOnEnable: 0
 --- !u!1 &833432594
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,15 +448,12 @@ MonoBehaviour:
       phaseStepInstruction: -1
     - Attack: {fileID: 833432597}
       phaseStepInstruction: 1
-    nextStepOnComplete: 0
   - BossAttacks:
     - Attack: {fileID: 833432600}
       phaseStepInstruction: -1
-    nextStepOnComplete: 0
   - BossAttacks:
     - Attack: {fileID: 833432599}
       phaseStepInstruction: -3
-    nextStepOnComplete: 0
 --- !u!114 &833432597
 MonoBehaviour:
   m_ObjectHideFlags: 0

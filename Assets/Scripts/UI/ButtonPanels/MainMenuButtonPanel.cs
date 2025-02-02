@@ -33,9 +33,11 @@ namespace Scripts.UI.ButtonPanels
             cursorImageRectTransform.localScale = Vector3.one;
             cursorImageRectTransform.DOPunchScale(Vector3.one * cursorPunchScale, cursorPunchDuration);
 
+            int GoodOrEvil = UnityEngine.Random.Range(0,2);
+
             var clickSound = button.Value is MainMenuButtons.NewGame or MainMenuButtons.Continue
-                ? SoundEffectType.StartGame
-                : SoundEffectType.UISelect;
+                ? SoundEffectType.MenuSelect
+                : (GoodOrEvil == 0 ? SoundEffectType.Good : SoundEffectType.Evil);
             sfxPlayer.PlaySoundEffect(clickSound);
             
             switch (buttonPressed)
@@ -63,7 +65,7 @@ namespace Scripts.UI.ButtonPanels
             
             if (sfxPlayer == null) return;
             
-            sfxPlayer.PlaySoundEffect(sfx: SoundEffectType.UIClick);
+            sfxPlayer.PlaySoundEffect(sfx: SoundEffectType.MenuHover);
         }
     }
 }

@@ -14,18 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks: []
   sounds:
-  - soundEffectName: 6
-    clip: {fileID: 8300000, guid: dd5f3d27ea9f4d94a95abfe3fcce5587, type: 3}
-    volumeMultiplier: 0.2
-  - soundEffectName: 5
-    clip: {fileID: 8300000, guid: cc4b2be10a9219949bb474e17c3fad28, type: 3}
-    volumeMultiplier: 0.2
-  - soundEffectName: 7
-    clip: {fileID: 8300000, guid: 045de7cad63cc304a854925705152441, type: 3}
-    volumeMultiplier: 5
   - soundEffectName: 2
+    clip: {fileID: 8300000, guid: 777cdb487ba4ae94fb65fbcb68ab1191, type: 3}
+    volumeMultiplier: 0.2
+  - soundEffectName: 3
+    clip: {fileID: 8300000, guid: 1635fe1e80c4e2f418681a6ac997cbad, type: 3}
+    volumeMultiplier: 0.2
+  - soundEffectName: 10
+    clip: {fileID: 8300000, guid: 045de7cad63cc304a854925705152441, type: 3}
+    volumeMultiplier: 1
+  - soundEffectName: 11
+    clip: {fileID: 8300000, guid: 4a8637e220ddf674ca4a6d86ffb11e3f, type: 3}
+    volumeMultiplier: 1
+  - soundEffectName: 1
     clip: {fileID: 8300000, guid: cc4b2be10a9219949bb474e17c3fad28, type: 3}
-    volumeMultiplier: 1
+    volumeMultiplier: 0.6
   - soundEffectName: 4
-    clip: {fileID: 8300000, guid: 080331243a32061449bef036e3f368c4, type: 3}
-    volumeMultiplier: 1
+    clip: {fileID: 8300000, guid: 9570ee51b363fcb41a0855e06314dcc6, type: 3}
+    volumeMultiplier: 0.1

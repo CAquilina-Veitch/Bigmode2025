@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Audio;
 using Extensions;
 using R3;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Scripts.Enemy.Behaviour
     {
         [SerializeField] private List<BossPhase> Phases;
         [SerializeField] private Transform playerTransform;
+        public SoundEffectPlayer soundEffectPlayer;
         private int currentBossPhase;
         private int currentBossPhaseStep;
 

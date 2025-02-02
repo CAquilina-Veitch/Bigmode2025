@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &15971059
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4957007298430635631, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402259260358505963, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b51f72a1332a0be458d0ca7062430a18, type: 3}
 --- !u!1 &173882999
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +191,7 @@ GameObject:
   - component: {fileID: 173883002}
   m_Layer: 6
   m_Name: attack areaL
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,6 +394,7 @@ MonoBehaviour:
   invTime: 1
   invTimer: 0
   invuln: 0
+  soundEffectPlayer: {fileID: 216333099}
   myRigidBody: {fileID: 216333093}
 --- !u!50 &216333093
 Rigidbody2D:
@@ -433,6 +491,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &216333099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216333082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8491e3db2637429882173bfac2f20205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffect: 0
+  volumeMultiplier: 1
+  pitchMult: 1
+  playOnEnable: 0
 --- !u!1 &890138225
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +522,7 @@ GameObject:
   - component: {fileID: 890138227}
   m_Layer: 6
   m_Name: attack areaR
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -929,6 +1003,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7902101556270293703, guid: 4a7f798dab014964ba3ee3b38157ddc2, type: 3}
+      propertyPath: soundEffectPlayer
+      value: 
+      objectReference: {fileID: 216333099}
     - target: {fileID: 8786158966063384596, guid: 4a7f798dab014964ba3ee3b38157ddc2, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -1002,6 +1080,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7878504751538216712, guid: 4a7f798dab014964ba3ee3b38157ddc2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 216333095}
+    - targetCorrespondingSourceObject: {fileID: 7878504751538216712, guid: 4a7f798dab014964ba3ee3b38157ddc2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 216333099}
   m_SourcePrefab: {fileID: 100100000, guid: 4a7f798dab014964ba3ee3b38157ddc2, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1010,3 +1091,4 @@ SceneRoots:
   - {fileID: 1244132962}
   - {fileID: 1353242649748965807}
   - {fileID: 1107110359}
+  - {fileID: 15971059}

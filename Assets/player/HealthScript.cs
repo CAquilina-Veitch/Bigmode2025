@@ -14,6 +14,7 @@ public class HealthScript : MonoBehaviour
     public float invTime = 1f;
     public float invTimer;
     public bool invuln = false;
+    public SoundEffectPlayer soundEffectPlayer;
 
     public Rigidbody2D myRigidBody;
 
@@ -27,6 +28,7 @@ public class HealthScript : MonoBehaviour
         if (invuln == false)
         {
             Health += -1;
+            soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit, pitch: 0.65f);
         }
 
         invuln = true;
@@ -43,6 +45,7 @@ public class HealthScript : MonoBehaviour
         if (invuln == false)
         {
             Health += -1;
+            soundEffectPlayer.PlaySoundEffect(SoundEffectType.GetHit, pitch: 0.65f);
         }
 
         invuln = true;

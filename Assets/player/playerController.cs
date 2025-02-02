@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,18 +19,19 @@ public class playerController : MonoBehaviour
     private bool attackingR = false;
     private GameObject attackAreaR = default;
     private float timerR = 0;
+    public SoundEffectPlayer soundEffectPlayer;
     void Awake()
     {
         Input = GetComponent<PlayerInput>();
     }
     void OnEnable()
     {
-        playerControls.Enable();
+        //playerControls.Enable();
     }
 
     void OnDisable()
     {
-        playerControls.Disable();
+        //playerControls.Disable();
     }
   
     private void OnMove(InputValue InputValue)
@@ -43,12 +45,14 @@ public class playerController : MonoBehaviour
     private void OnLeftPunch()
     {
         attackingL = true;
-        attackAreaL.SetActive(attackingL);      
+        attackAreaL.SetActive(attackingL);
+        soundEffectPlayer.PlaySoundEffect(SoundEffectType.PunchAttack, pitch: 1.1f);
     }
     private void OnRightPunch()
     {
         attackingR = true;
         attackAreaR.SetActive(attackingR);
+        soundEffectPlayer.PlaySoundEffect(SoundEffectType.PunchAttack, pitch: 0.8f);
     }
     public void Move()
     {

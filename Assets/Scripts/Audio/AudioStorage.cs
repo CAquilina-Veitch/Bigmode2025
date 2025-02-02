@@ -8,13 +8,17 @@ namespace Audio
     public enum SoundEffectType
     {
         None,
-        Punch,
-        Hit,
-        TakeDamage,
-        Die,
-        UIClick,
-        UISelect,
-        StartGame
+        GetHit,
+        MenuHover,
+        MenuSelect,
+        PunchAttack,
+        LowHealth,
+        Destroyed,
+        FlurryPunch,
+        Stunned,
+        PunchedAway,
+        Good,
+        Evil,
     }
 
     [Serializable]
