@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks:
   - trackIDName: 1
-    clip: {fileID: 8300000, guid: 080331243a32061449bef036e3f368c4, type: 3}
-    volumeMultiplier: 1
+    clip: {fileID: 8300000, guid: ec968b30d86a10542a7979fbcd8c96aa, type: 3}
+    volumeMultiplier: 0.5
     doesLoop: 1
   - trackIDName: 3
     clip: {fileID: 8300000, guid: 473384256584eb54c999844c41cb1875, type: 3}
