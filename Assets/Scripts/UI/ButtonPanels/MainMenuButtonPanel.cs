@@ -5,6 +5,7 @@ using Extensions;
 using Scripts.UI.Buttons;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Scripts.UI.ButtonPanels
@@ -15,7 +16,10 @@ namespace Scripts.UI.ButtonPanels
         [SerializeField] private RectTransform cursorImageRectTransform;
         [SerializeField] private float cursorPunchScale = 2;
         [SerializeField] private float cursorPunchDuration;
-        [SerializeField] private SoundEffectPlayer sfxPlayer; 
+        [SerializeField] private SoundEffectPlayer sfxPlayer;
+
+        [SerializeField] private string Start;
+
         public enum MainMenuButtons
         {
             Null,
@@ -45,6 +49,7 @@ namespace Scripts.UI.ButtonPanels
                 case MainMenuButtons.Continue:
                     break;
                 case MainMenuButtons.NewGame:
+                    SceneManager.LoadScene(Start);
                     break;
                 case MainMenuButtons.Options:
                     break;
