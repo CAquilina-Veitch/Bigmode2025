@@ -79,7 +79,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.24, y: -4, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5516780187477781311}
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5544282123755255143, guid: 79a46e4e8909b0f4bacbe1f81f873430, type: 3}
+  m_Sprite: {fileID: 5053457509014776566, guid: 59317658c97efde47b121d4982a3bf5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -175,9 +175,10 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   animator: {fileID: 1441264558559518568}
   soundEffectPlayer: {fileID: 1976202716321806075}
-  maxHealth: 5
+  maxHealth: 1
   hurtBoxes:
   - {fileID: 6678022927642026944}
+  jumpReady: 1
 --- !u!114 &5645785127437824937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,17 +225,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.03751129, y: -0.29468584}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.66, y: 0.54}
+    oldSize: {x: 2.4375, y: 2.28125}
     newSize: {x: 0.66, y: 0.54}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1.3552579, y: 1.0893717}
   m_EdgeRadius: 0
 --- !u!95 &1441264558559518568
 Animator:
@@ -374,7 +375,7 @@ MonoBehaviour:
   - BossAttacks:
     - Attack: {fileID: 2887810257248875481}
       phaseStepInstruction: -1
-    - Attack: {fileID: 7390599088005182280}
+    - Attack: {fileID: 2812999255660520170}
       phaseStepInstruction: 1
   - BossAttacks:
     - Attack: {fileID: 2812999255660520170}
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3946e8c02222b4458d3e69ed69b6322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: {x: -8, y: 8}
+  moveRange: {x: -4, y: 4}
   moveSpeed: 0.12
   ShootRange: {x: -4, y: 4}
   Bullet: {fileID: 9156668992632751370, guid: c4401370607412349ba2b29dc753b44d, type: 3}
@@ -422,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43bf461846d1e9740a61529b729663b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: {x: -8, y: 8}
+  moveRange: {x: -4, y: -4}
   moveSpeed: 0.12
   ShootRange: {x: -4, y: 4}
   Bullet: {fileID: 9156668992632751370, guid: c4401370607412349ba2b29dc753b44d, type: 3}
@@ -439,8 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae2129d0acf95e429668379537b478b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveRange: {x: 9, y: 4}
-  moveSpeed: 0.12
+  moveRange: {x: -4, y: 4}
+  moveSpeed: 4
   shootRange: {x: -4, y: 4}
   ExplodeShot: {fileID: 1877459721360931060, guid: 32c5a670b6f01c04493b4acee8bf62fb, type: 3}
 --- !u!114 &2887810257248875481

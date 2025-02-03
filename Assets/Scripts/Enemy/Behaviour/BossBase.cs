@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Audio;
 using Extensions;
+using NUnit.Framework.Constraints;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -22,6 +23,10 @@ namespace Scripts.Enemy.Behaviour
         
         private readonly SerialDisposable phaseStepInstructionDisposable = new();
         private readonly SerialDisposable healthValueNextPhaseDisposable = new();
+
+        //Win effect stuff idk
+        public GameObject winScreen;
+        public GameObject frogman;
 
         private string playerTag = Extensions.Extensions.GameTag(GameTags.PlayerAttack);
         private void Awake()
@@ -131,6 +136,9 @@ namespace Scripts.Enemy.Behaviour
         private void OnDeath()
         {
             Debug.LogWarning("Boss died;");
+            winScreen.SetActive(true);
+            frogman.SetActive(false);
+            soundEffectPlayer.PlaySoundEffect(SoundEffectType.Victory);
         }
         private void SubscribeToHurtboxes()
         {

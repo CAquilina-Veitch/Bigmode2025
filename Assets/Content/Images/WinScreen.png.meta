@@ -1,10 +1,76 @@
 fileFormatVersion: 2
-guid: 79a46e4e8909b0f4bacbe1f81f873430
+guid: 2f842e9c6f4b1e04b9031d704ff1772d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5544282123755255143
-    second: frog1_0
+      213: -848381713617584042
+    second: WinScreen_0
+  - first:
+      213: -6505382333316377323
+    second: WinScreen_1
+  - first:
+      213: -2970563427408713083
+    second: WinScreen_2
+  - first:
+      213: -753110445336945778
+    second: WinScreen_3
+  - first:
+      213: 4178962086049787493
+    second: WinScreen_4
+  - first:
+      213: -240728449223898739
+    second: WinScreen_5
+  - first:
+      213: -8100974343842184627
+    second: WinScreen_6
+  - first:
+      213: -975574451641464429
+    second: WinScreen_7
+  - first:
+      213: -749812756187312319
+    second: WinScreen_8
+  - first:
+      213: -4384275067207963124
+    second: WinScreen_9
+  - first:
+      213: -7880040437368641078
+    second: WinScreen_10
+  - first:
+      213: -5673013618667800192
+    second: WinScreen_11
+  - first:
+      213: 7399960156417487044
+    second: WinScreen_12
+  - first:
+      213: -2264900055205162145
+    second: WinScreen_13
+  - first:
+      213: -166739142672952270
+    second: WinScreen_14
+  - first:
+      213: 1744343488800687652
+    second: WinScreen_15
+  - first:
+      213: 7808159816961633156
+    second: WinScreen_16
+  - first:
+      213: -4359613569320412089
+    second: WinScreen_17
+  - first:
+      213: -3671109514761440403
+    second: WinScreen_18
+  - first:
+      213: 3274869207860433772
+    second: WinScreen_19
+  - first:
+      213: -4056116416781094078
+    second: WinScreen_20
+  - first:
+      213: 4597821162632920592
+    second: WinScreen_21
+  - first:
+      213: -5245620122211684646
+    second: WinScreen_22
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +166,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frog1_0
+      name: WinScreen_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 66
-        height: 54
+        width: 256
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99a050788c0ce03b0800000000000000
-      internalID: -5544282123755255143
+      spriteID: 65003ed8351f934f0800000000000000
+      internalID: -848381713617584042
       vertices: []
       indices: 
       edges: []
@@ -125,7 +191,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 075dd86c6111e4b4a9b52b46ac6b5276
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +201,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      frog1_0: -5544282123755255143
+      WinScreen_0: -848381713617584042
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

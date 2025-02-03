@@ -21,6 +21,7 @@ namespace Audio
         Evil,
         Jump,
         GameOver,
+        Victory,
     }
 
     [Serializable]

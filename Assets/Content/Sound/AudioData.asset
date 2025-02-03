@@ -46,3 +46,6 @@ MonoBehaviour:
   - soundEffectName: 13
     clip: {fileID: 8300000, guid: bbe0c0cdf72a6ff47b5634ff48591618, type: 3}
     volumeMultiplier: 0.3
+  - soundEffectName: 14
+    clip: {fileID: 8300000, guid: 017a3f1ae7cd36344b4180e6c23126b1, type: 3}
+    volumeMultiplier: 0.3
