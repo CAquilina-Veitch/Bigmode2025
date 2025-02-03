@@ -31,8 +31,8 @@ public class HealthScript : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!collision.CompareTag(Ext.GameTag(GameTags.Boss))) return;
-        
-        if (invuln == false) 
+
+        if (invuln == false)    
             OnTakeDamage();
     }
 
